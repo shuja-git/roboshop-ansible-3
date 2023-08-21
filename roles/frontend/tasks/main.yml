@@ -1,16 +1,3 @@
-#print_head "Copying into roboshop conf"
-#cp ${code_dir}/configs/nginx-roboshop.conf /etc/nginx/default.d/roboshop.conf
-#status_check $?
-#print_head "Enabling Nginx"
-#systemctl enable nginx &>>${log_file}
-#status_check $?
-#print_head "Starting Nginx"
-#systemctl restart nginx &>>${log_file}
-#status_check $?
-#
-#
-##if any command is failed or errored then we need to stop the script
-
 - name: Install Nginx
   ansible.builtin.yum:
     name: nginx
