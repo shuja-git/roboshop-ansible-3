@@ -1,0 +1,3 @@
+-  name: payment setup
+   ansible.builtin.debug:
+     msg: "payment setup"

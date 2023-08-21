@@ -1,0 +1,3 @@
+-  name: mongodb setup
+   ansible.builtin.debug:
+     msg: "mongodb setup"

@@ -1,0 +1,3 @@
+-  name: redis setup
+   ansible.builtin.debug:
+     msg: "redis setup"
