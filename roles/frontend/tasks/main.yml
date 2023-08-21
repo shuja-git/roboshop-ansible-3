@@ -1,3 +1,39 @@
--  name: Frontend setup
-   ansible.builtin.debug:
-     msg: "Frontend setup"
+#print_head "Copying into roboshop conf"
+#cp ${code_dir}/configs/nginx-roboshop.conf /etc/nginx/default.d/roboshop.conf
+#status_check $?
+#print_head "Enabling Nginx"
+#systemctl enable nginx &>>${log_file}
+#status_check $?
+#print_head "Starting Nginx"
+#systemctl restart nginx &>>${log_file}
+#status_check $?
+#
+#
+##if any command is failed or errored then we need to stop the script
+
+- name: Install Nginx
+  ansible.builtin.yum:
+    name: nginx
+    state: installed
+
+- name: Remove old directory
+  ansible.builtin.file:
+    path: /usr/share/nginx/html/*
+    state: absent
+
+- name: Download and Extract frontend contents
+  ansible.builtin.unarchive:
+    src:  https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
+    dest: /usr/share/nginx/html
+    remote_src: yes
+
+- name: Copy file with owner and permissions
+  ansible.builtin.copy:
+    src: roboshop.conf
+    dest: /etc/nginx/default.d/roboshop.conf
+
+- name: Start Nginx
+  ansible.builtin.systemd:
+    name: nginx
+    state: restarted
+    enabled: true
