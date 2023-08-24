@@ -1,2 +1,4 @@
-  - ansible.builtin.import_role:
-      name: nodejs
+- name: import nodejs for cart
+  import_role:
+    name: common
+    tasks_from: nodejs
