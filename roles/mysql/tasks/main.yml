@@ -11,7 +11,7 @@
      name: mysql-community-server
      state: installed
 
-- name: Start Nginx
+- name: Start Mysql service
   ansible.builtin.systemd:
     name: mysqld
     state: restarted
