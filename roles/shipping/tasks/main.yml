@@ -1,3 +1,5 @@
--  name: shipping setup
-   ansible.builtin.debug:
-     msg: "shipping setup"
+- name: import Java for shipping
+  import_role:
+    name: common
+    tasks_from: java
+

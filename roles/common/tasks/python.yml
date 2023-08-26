@@ -1,0 +1,29 @@
+#print_head "Download Dependencies"
+#pip3.6 install -r requirements.txt &>>${log_file}
+#status_check $?
+#
+#systemd_setup
+#}
+
+- name: Install python
+  ansible.builtin.yum:
+    name:
+      - python36
+      - gcc
+      - python3-devel
+    state: installed
+
+- name: Include task app-re-req
+  ansible.builtin.import_tasks:
+    file: app-prereq-setup.yml
+
+- name: Download Python Dependencies
+  ansible.builtin.pip:
+    requirements: /app/requirements.txt
+    executable: pip3.3
+
+- name: SystemD Setup
+  ansible.builtin.import_tasks:
+    file: systemd-setup.yml
+
+

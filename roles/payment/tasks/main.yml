@@ -1,3 +1,5 @@
--  name: payment setup
-   ansible.builtin.debug:
-     msg: "payment setup"
+- name: import Python for payment
+  import_role:
+    name: common
+    tasks_from: python
+
