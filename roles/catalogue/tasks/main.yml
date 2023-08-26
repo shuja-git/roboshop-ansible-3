@@ -1,3 +1,4 @@
--  name: Catalogue setup
-   ansible.builtin.debug:
-     msg: "Catalogue setup"
+- name: import nodejs for catalogue
+  import_role:
+    name: common
+    tasks_from: nodejs
