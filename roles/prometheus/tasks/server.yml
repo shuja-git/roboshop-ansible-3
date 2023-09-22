@@ -1,0 +1,3 @@
+- name: prometheus
+  ansible.builtin.debug:
+    msg: "testing.."
