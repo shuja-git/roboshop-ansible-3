@@ -1,0 +1,7 @@
+- name: Download and extract prometheus Node Exporter
+  ansible.builtin.unarchive:
+    src: export_url
+    dest: /opt/
+    remote_src: yes
+
+
