@@ -1,0 +1,10 @@
+groups:
+  - name: roboshop
+    rules:
+      - alert: ServerDown
+        expr: up < 1
+        for: 20s
+        labels:
+          severity: Critical
+        annotations:
+          summary: Server Down
