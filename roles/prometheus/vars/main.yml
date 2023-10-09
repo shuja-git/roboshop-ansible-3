@@ -3,3 +3,6 @@ components:
   - cart
   - payment
   - catalogue
+alert_files:
+    - service-down-alerts.yml
+    - alerts.yml
