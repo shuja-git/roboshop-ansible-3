@@ -15,7 +15,7 @@ alerting:
 rule_files:
 {% for files in alert_files %}
   - {{ files }}
-  {% endfor %}
+{% endfor %}
 
 
 
