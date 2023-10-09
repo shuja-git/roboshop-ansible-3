@@ -2,6 +2,7 @@ groups:
   - name: Roboshop-Service Alerts
     rules:
     {% for component in components %}
+
     - alert: Service Down Alerts - {{ item }} service
       expr: node_systemd_unit_state{exported_name="{{ item }}.service", state="active"}
       for: 30s
