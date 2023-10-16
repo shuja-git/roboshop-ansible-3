@@ -16,3 +16,16 @@
 
 - name: check Prometheus is started or not
   ansible.builtin.shell: netstat -lntp | grep 9090
+
+- name: prometheus Alertmanager configuration
+  ansible.builtin.template:
+    src: alertmanager.yml
+    dest: /opt/alertmanager/alertmanager.yml
+
+- name: Restart Alertmanager
+  ansible.builtin.systemd:
+    name: alertmanager
+    state: restarted
+
+- name: check alertmanager is started or not
+  ansible.builtin.shell: netstat -lntp | grep 9093
